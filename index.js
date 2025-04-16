@@ -33,7 +33,6 @@ app.use((err, res) => {
     error: process.env.NODE_ENV === "production" ? null : err.message,
   })
 })
-
 // 404 handler
 app.use((req, res) => {
   res.status(404).json({
