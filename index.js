@@ -14,10 +14,12 @@ app.use(express.json())
 
 // Environment variables
 const port = process.env.PORT || 3000
+
 // Basic routes
-app.get("/", ( res) => {
+app.get("/", (req, res) => {
   res.json({ message: "Welcome to the Social API", status: "online" })
 })
+
 // Routes
 app.use("/auth/signup", signUpRouter)
 app.use("/auth/signin", signInRouter)
@@ -25,7 +27,7 @@ app.use("/users", userRouter)
 app.use("/posts", postsRouter)
 
 // Global error handler
-app.use((err, res) => {
+app.use((err, req, res) => {
   console.error("Global error handler:", err.stack)
   res.status(500).json({
     status: "error",
@@ -33,6 +35,7 @@ app.use((err, res) => {
     error: process.env.NODE_ENV === "production" ? null : err.message,
   })
 })
+
 // 404 handler
 app.use((req, res) => {
   res.status(404).json({

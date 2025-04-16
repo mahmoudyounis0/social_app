@@ -5,7 +5,6 @@ const getAllposts = (req, res) => {
     conn.execute(query, (err, data) => {
         if (err) return res.status(400).json({ message: err.message })
         res.status(200).json({ message: "all posts", data: data })
-
     })
 }
 const addpost = (req, res) => {

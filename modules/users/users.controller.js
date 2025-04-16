@@ -27,7 +27,7 @@ const getUserPosts = async (req, res) => {
             if (result.length === 0) {
                 return res.status(404).json({ message: 'No Available Posts' });
             }
-            res.status(200).json({ message: 'Posts retrieved successfully', data: result });
+            res.status(200).json({ message: 'Posts Retrieved Successfully', data: result });
         });
 
     } catch (err) {
